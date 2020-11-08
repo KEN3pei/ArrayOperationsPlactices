@@ -1,0 +1,4 @@
+alice@example.com|Alice Lindell
+bandersnatch@example.com|Bandersnatch Gardner
+charles@milk.example.com|Charle Tennil
+dodgson@turtle.example.com|Lewis Humbert
