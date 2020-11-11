@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+// arraypractice.php
 
 $array = [
     "New York" => ["NY", 8175133],
@@ -12,16 +14,6 @@ $array = [
     "Dallas" => ["TX", 1197816],
     "San Joes" => ["CA", 945942]
 ];
-
-// echo "<table border=1><tr><th>都市</th><th>州</th><th>人口</th></tr>";
-//     $total = 0; 
-//     foreach($array as $key => $value){
-//         echo "<tr><td>" . $key . "</td>
-//                 <td>" . $value[0] . "</td>
-//                 <td>" . $value[1] . "</td></tr>";
-//         $total += $value[1];
-//     }
-// echo "<tr><td>合計</td><td></td><td>" . $total . "</td></tr></table>";
 
 echo "都市名順";
 ksort($array);
@@ -53,7 +45,12 @@ echo "<tr><td>合計</td><td></td><td>" . $total . "</td></tr></table>";
 foreach ($array as $key => $value) {
     $states[] = $value[0];
 }
-$result = [];
+
+$unique = array_unique($states);
+foreach($unique as $value){
+    $result[$value] = "";
+}
+// var_dump($result);
 foreach($states as $state){
     foreach ($array as $key => $value){
         if($state == $value[0]){

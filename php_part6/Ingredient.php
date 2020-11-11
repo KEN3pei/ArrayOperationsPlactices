@@ -14,12 +14,12 @@ class Ingredient{
         $this->cost = $cost;
     }
 
-    public function getName(){
-        return $this->name;
-    }
+    // public function getName(){
+    //     return $this->name;
+    // }
 
-    public function getCost(){
-        return $this->cost;
-    }
+    // public function getCost(){
+    //     return $this->cost;
+    // }
 }
 ?>
