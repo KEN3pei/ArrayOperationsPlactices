@@ -1,5 +1,5 @@
 <?php
-namespace Ingredient;
+namespace PHP_git\php_part6;
 
 class Ingredient{
     private $name;
@@ -18,8 +18,8 @@ class Ingredient{
     //     return $this->name;
     // }
 
-    // public function getCost(){
-    //     return $this->cost;
-    // }
+    public function getCost(){
+        return $this->cost;
+    }
 }
 ?>

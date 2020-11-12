@@ -1,10 +1,12 @@
 <?php
-error_reporting(E_ALL);
+
+namespace PHP_git\php_part6;
+// error_reporting(E_ALL);
 
 require_once "Entree.php";
 require_once "Ingredient.php";
-use Entree\Entree;
-use Ingredient\Ingredient;
+use PHP_git\php_part6\Entree;
+use PHP_git\php_part6\Ingredient;
 
 class ComboMeal extends Entree{
 
@@ -25,35 +27,19 @@ class ComboMeal extends Entree{
         }
         return false;
     }
-    
-    public function totalCosts($ing_costs){
+
+    public function totalCosts(){
         $total = 0;
-        foreach($ing_costs as $value){
-            if($this->hasIngredient($value[0])){
-                echo $value[0] . "</br>";
-                $total += $value[1];
-                $ingredient[] = new Ingredient($value[0], $value[1]);
-            }
+        foreach($this->ingredients as $value){
+            var_dump($value);
+            $total += $value->ingCosts();
+
         }
-        // var_dump($this->ingredients);
         return $total;
     }
 }
-// このままだと同じ値でも材料の数だけ入力しなければいけない
-// entreeの配列にIngredientオブジェクトが入るようにしたい
-$ing_costs = [
-    ["chickin", "500"],
-    ["water", "100"],
-    ["chickin", "500"],
-    ["bread", "200"]
-];
-
-$soup = new Entree("Chickin Soup", array("chickin", "water"));
-$sandwich = new Entree("Chickin Sandwich", array("chickin", "bread"));
-
-$combo = new ComboMeal("Soup + Sandwich", array($soup, $sandwich));
-$total_cost = $combo->totalCosts($ing_costs);
-echo $total_cost . "</br>";
+// $total_cost = $combo->totalCosts($ing_costs);
+// echo $total_cost . "</br>";
 
 // foreach(["chickin", "lemon", "bread", "water"] as $ing){
 //     if($combo->hasIngredient($ing)){

@@ -1,10 +1,10 @@
-<?php 
-namespace Entree;
+<?php
+namespace PHP_git\php_part6;
 //前菜を表す
 class Entree{
     private $name;
     protected $ingredients = array();
-    
+
     //※constructorは返り値を返さないため問題発生による通知を行うことができない。
     public function __construct($name, $ingredient){
         if(!is_array($ingredient)){
@@ -22,6 +22,16 @@ class Entree{
 
     public static function getSize(){
         return array("small", "midiam", "large");
+    }
+
+    public function ingCosts(){
+        $total = 0;
+//         var_dump($this->ingredients[0]->getCost());
+        foreach($this->ingredients as $value){
+            $total += $value->getCost();
+        }
+//         echo $total;
+        return $total;
     }
 }
 
@@ -55,8 +65,8 @@ class Entree{
 // }
 
 //以下のようなエラーを吐き出す
-// Fatal error: Uncaught Exception: $ingredient must be array 
-// in /var/www/html/Entree.php:10 Stack trace: #0 /var/www/html/Entree.php(43): 
+// Fatal error: Uncaught Exception: $ingredient must be array
+// in /var/www/html/Entree.php:10 Stack trace: #0 /var/www/html/Entree.php(43):
 // Entree->__construct('Glass of milk', 'milk') #1 {main} thrown in /var/www/html/Entree.php on line 10
 // Uncaught(未捕捉) ＝ 致命的エラー
 // Stack traceの{main}行はphpだと最後にかならず出てくる。

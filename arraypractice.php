@@ -18,7 +18,7 @@ $array = [
 echo "都市名順";
 ksort($array);
 echo "<table border=1><tr><th>都市</th><th>州</th><th>人口</th></tr>";
-    $total = 0; 
+    $total = 0;
     foreach($array as $key => $value){
         echo "<tr><td>" . $key . "</td>
                 <td>" . $value[0] . "</td>
@@ -33,7 +33,7 @@ foreach ($array as $key => $value) {
 array_multisort($sort, SORT_DESC, $array);
 echo "人口順";
 echo "<table border=1><tr><th>都市</th><th>州</th><th>人口</th></tr>";
-    $total = 0; 
+    $total = 0;
     foreach($array as $key => $value){
         echo "<tr><td>" . $key . "</td>
                 <td>" . $value[0] . "</td>
@@ -48,7 +48,7 @@ foreach ($array as $key => $value) {
 
 $unique = array_unique($states);
 foreach($unique as $value){
-    $result[$value] = "";
+    $result[$value] = 0;
 }
 // var_dump($result);
 foreach($states as $state){
@@ -62,7 +62,7 @@ foreach($states as $state){
 // var_dump($result);
 echo "州ごと";
 echo "<table border=1><tr><th>州</th><th>人口</th></tr>";
-    $total = 0; 
+    $total = 0;
     foreach($result as $key => $value){
         echo "<tr><td>" . $key . "</td>
                 <td>" . $value . "</td></tr>";
