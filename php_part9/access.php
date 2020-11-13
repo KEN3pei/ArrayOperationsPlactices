@@ -13,6 +13,6 @@ while((!feof($fh)) && ($line = fgets($fh))){
     $info = explode('|', $line);
     print '<li><a href="mailto:' . $info[0] .'">' . $info[1]. '</a></li><br>';
 }
-fclose($fh); //ファイルへの接続解除
+fclose($fh); 
 
 ?>

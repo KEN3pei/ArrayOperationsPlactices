@@ -1,22 +1,24 @@
 <?php
 
 namespace PHP_git\php_part6;
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 require_once "Entree.php";
-require_once "Ingredient.php";
 use PHP_git\php_part6\Entree;
-use PHP_git\php_part6\Ingredient;
 
-class ComboMeal extends Entree{
+class ComboMeal{
+    private $name;
+    private $entrees;
 
     public function __construct($name, $entrees){
-        parent::__construct($name, $entrees);
+        // parent::__construct($name, $entrees);
         foreach($entrees as $entree){
             if(!$entree instanceof Entree){
                 throw new \Exception("Elements of $entrees must be Entree object");
             }
         }
+        $this->name = $name;
+        $this->entrees = $entrees;
     }
 
     public function hasIngredient($ingredient){
@@ -30,19 +32,11 @@ class ComboMeal extends Entree{
 
     public function totalCosts(){
         $total = 0;
-        foreach($this->ingredients as $value){
-            var_dump($value);
-            $total += $value->ingCosts();
+        foreach($this->entrees as $priceentree){
+            // var_dump($priceentree);
+            $total += $priceentree->getCost();
 
         }
         return $total;
     }
 }
-// $total_cost = $combo->totalCosts($ing_costs);
-// echo $total_cost . "</br>";
-
-// foreach(["chickin", "lemon", "bread", "water"] as $ing){
-//     if($combo->hasIngredient($ing)){
-//         echo $ing . "</br>";
-//     }
-// }
