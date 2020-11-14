@@ -1,10 +1,10 @@
 <?php
 
-namespace PHP_git\php_part6;
+namespace php_part6;
 error_reporting(E_ALL);
 
 require_once "Entree.php";
-use PHP_git\php_part6\Entree;
+use php_part6\Entree;
 
 class ComboMeal{
     private $name;
@@ -21,14 +21,14 @@ class ComboMeal{
         $this->entrees = $entrees;
     }
 
-    public function hasIngredient($ingredient){
-        foreach($this->ingredients as $entree){
-            if($entree->hasIngredient($ingredient)){
-                return true;
-            }
-        }
-        return false;
-    }
+    // public function hasIngredient($ingredient){
+    //     foreach($this->ingredients as $entree){
+    //         if($entree->hasIngredient($ingredient)){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
     public function totalCosts(){
         $total = 0;

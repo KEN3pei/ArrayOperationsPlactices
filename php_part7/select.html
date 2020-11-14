@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><title>select</title></head>
+    <body>
+        <form method="POST" action="order.php">
+            Braised Noodles with: <select name="noodle">
+            <option>crab meat</option>
+            <option>mushroom</option>
+            <option>barbecued pork</option>
+            <option>shredded </option>
+            </select>
+            <br/>
+            Sweet: <select name="sweet[]" multiple>
+            <option value="puff">Sesami sead Puff</option>
+            <option value="square">Coconut Milk Gelatin</option>
+            <option value="cake">Brown Suger Cake</option>
+            <option value="ricemeat">Sweet Rice and Meat</option>
+            </select>
+            <br/>
+            Sweet Quantity: <input type="text" name="sweet_q">
+            <br/>
+            <input type="submit" name="submit" value="Order">
+        </form>
+        <!-- mac -> cmd+クリック
+             windows -> ctrl+クリック -->
+    </body>
+</html>

@@ -1,5 +1,5 @@
 <?php
-namespace PHP_git\php_part6;
+namespace php_part6;
 
 class Ingredient{
     private $name;

@@ -6,9 +6,9 @@ require_once "Ingredient.php";
 require_once "ComboMeal.php";
 require_once 'PricedEntree.php';
 // use PHP_git\php_part6\Entree;
-use PHP_git\php_part6\Ingredient;
-use PHP_git\php_part6\PricedEntree;
-use PHP_git\php_part6\ComboMeal;
+use php_part6\Ingredient;
+use php_part6\PricedEntree;
+use php_part6\ComboMeal;
 
 
 $chickin = new Ingredient("chickin", 500);

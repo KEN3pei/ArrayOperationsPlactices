@@ -1,10 +1,10 @@
 <?php
-namespace PHP_git\php_part6;
+namespace php_part6;
 
 error_reporting(E_ALL);
 
-use PHP_git\php_part6\Entree;
-use PHP_git\php_part6\Ingredient;
+use php_part6\Entree;
+use php_part6\Ingredient;
 
 class PricedEntree extends Entree{
 

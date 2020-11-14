@@ -1,5 +1,5 @@
 <?php
-namespace PHP_git\php_part6;
+namespace php_part6;
 //前菜を表す
 class Entree{
     private $name;
