@@ -1,27 +1,21 @@
 <?php
 
+// $_POST[noodle] = barbecued pork
+// $_POST[sweet] = [puff, ricemeat]
+// $_POST[sweet_q] = 4
+// $_POST[submit] = Order"
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(validate()){
-        process_form();
-    }
+    process_form();
 }
 
 function process_form(){
-    echo $_POST['noodle'];       
+    print htmlentities($_POST['noodle']) . "<br/>";    
     foreach($_POST['sweet'] as $value){
-        echo $value;
+        print htmlentities($value) . "<br/>";
     }
-    echo $_POST['sweet_q'];
+    print htmlentities($_POST['sweet_q']);
 }
-
-function validate(){
-    if($_POST['sweet_q'] < 1){
-        return false;
-    }else{
-        return true;
-    }
-}
-
 
 
 
