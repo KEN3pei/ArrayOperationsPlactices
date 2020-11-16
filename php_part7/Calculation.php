@@ -1,14 +1,5 @@
 <?php
-
-// if($_SERVER['REQUEST_METHOD'] == 'POST'){
-//     $defaults = $_POST;
-//     var_dump($defaults);
-// }else{
-//     $defaults = array("plus" => "加算",
-//                       "minus" => "減算",
-//                       "multi" => "乗算",
-//                       "divided" => "除算");
-// }
+// 7.8演習問題3
 $defaults = array("plus" => "加算",
                     "minus" => "減算",
                     "multi" => "乗算",
