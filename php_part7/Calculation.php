@@ -1,4 +1,5 @@
 <?php
+//http://localhost/php_part7/Calculation.php
 // 7.8演習問題3
 $defaults = array("plus" => "加算",
                     "minus" => "減算",
@@ -30,20 +31,23 @@ function generate_option($options){
     return $html;
 }
 
-function plus(){
-    return $_POST['num1'] + $_POST['num2'];
+function plus($num1, $num2){
+    return $num1 + $num2;
 }
 
-function minus(){
-    return $_POST['num1'] - $_POST['num2'];
+function minus($num1, $num2){
+    return $num1 - $num2;
 }
 
-function multi(){
-    return $_POST['num1'] * $_POST['num2'];
+function multi($num1, $num2){
+    return $num1 * $num2;
 }
 
-function divided(){
-    return $_POST['num1'] / $_POST['num2'];
+function divided($num1, $num2){
+    if($num2 == 0){
+        return "num2 is zero please reset";
+    }
+    return $num1 / $num2;
 }
 
 function validate(){
@@ -77,7 +81,18 @@ function validate(){
             // echo "ncisuvkzle";
             if(validate()){
                 $post = htmlentities($_POST['calculation']);
-                print $post();
+                $num1 = htmlentities($_POST['num1']);
+                $num2 = htmlentities($_POST['num2']);
+
+                if($post == "plus"){
+                    print plus($num1, $num2);
+                }elseif($post == "minus"){
+                    print minus($num1, $num2);
+                }elseif($post == "multi"){
+                    print multi($num1, $num2);
+                }elseif($post == "divided"){
+                    print divided($num1, $num2);
+                }
             }
         }else{
             show_form();
