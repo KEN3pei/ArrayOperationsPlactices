@@ -86,7 +86,7 @@ class FormHelper {
     }
 
     public function isOptionSelected($name, $value){
-        if(!isset($this->values['name'])){
+        if(!isset($this->values[$name])){
             return false;
         }elseif(is_array($this->values[$name])){
             return in_array($value, $this->values[$name]);

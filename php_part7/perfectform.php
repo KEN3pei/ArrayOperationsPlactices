@@ -81,6 +81,7 @@ function process_form($input){
     if(strlen(trim($input['comments']))){
         $message .= 'Your comments:' .$input['comments'];
     } 
+    var_dump($input);
     mail('chef@restaurant.example.com', 'New Order', $message);
     print nl2br(htmlentities($message, ENT_HTML5));
 }
