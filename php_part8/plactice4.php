@@ -2,13 +2,11 @@
 //演習問題8.12-4
 
 // 数値と数字の違いをわかってなかったため電話番号登録でsqlエラーが出た
-"create table restaurents (
-    
+"create table restaurents (   
     client_id int not null primary key auto_increment, 
     name varchar(20) unique not null,
     tellnumber varchar(11) not null, 
     dish_id int not null
-
 )";
 
 require_once "formhelper.php";
