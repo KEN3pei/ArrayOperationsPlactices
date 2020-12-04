@@ -1,5 +1,4 @@
 <?php
-
 //演習問題8.12-1
 "UPDATE dishes ORDER BY price ";
 
