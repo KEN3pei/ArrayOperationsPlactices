@@ -3,13 +3,18 @@
 require_once "formhelper.php";
 
 try{
-    $db = new PDO('mysql:host=web_mysql_1;dbname=plactice','root','pass');
+    $db = new PDO('mysql:host=docker-practice_mysql_1;dbname=plactice','root','pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-    $sql = "SELECT dish_name FROM dishes";
+    $sql = "SELECT dish_id, dish_name FROM dishes";
     $stmt = $db->query($sql);
-    $dishe_names = $stmt->fetch(PDO::FETCH_ASSOC);
+    $dishes = $stmt->fetchAll();
+
+    foreach($dishes as $dish){
+        $dish_names[$dish->dish_id] = $dish->dish_name;
+    }
+    // var_dump($dish_names);
 
 }catch(PDOException $e){
     print $e->getMessage();
@@ -36,32 +41,27 @@ function show_form($errors = array()){
 
 function validate(){
     global $db;
-    $input = array();
     $errors = array();
 
-    $input['dishe_name'] = $_POST['dishe_name'] ?? '';
-    $dish = $db->quote($input['price']);
-    $dish = strtr($dish, array('_' => '\_', '%' => '\%'));
+    $dish_id = filter_input(INPUT_POST, 'dish_id', FILTER_VALIDATE_INT);
+    if($dish_id === null || $dish_id === false){
+        $errors[] = 'Please enter minimum';
+    }
 
-    $sql = "SELECT * FROM dishes WHERE dish_name >= ?";
-    $stmt = $db->prepare($sql);
-    $stmt->execute(array($dish));
-    $dishes = $stmt->fetchAll();
-
+    $sql = "SELECT * FROM dishes WHERE dish_id = $dish_id";
+    $stmt = $db->query($sql);
+    $dishes = $stmt->fetch();
+    
     return array($errors, $dishes);
 }
 
 function process_form($dishes){
 
-    if(count($dishes) == 0){
-        print 'No dishes matched';
-    }else{
+    if($dishes){
         print '<table>';
         print '<tr><th>Dish ID</th><th>Dish Name</th><th>Price</th><th>is_spicy</th></tr>';
-        foreach($dishes as $dish){
-            printf('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
-                    htmlentities($dish->dish_id), $dish->dish_name, $dish->price, $dish->is_spicy);
-        }
+        printf('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
+                htmlentities($dishes->dish_id), $dishes->dish_name, $dishes->price, $dishes->is_spicy);
         print '<table>';
     }
 
