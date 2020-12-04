@@ -1,4 +1,4 @@
-
+<!-- 演習問題8.12-4 -->
 <form method='POST' action="<?= $form->encode($_SERVER['PHP_SELF'])?>">
 <table>
     <?php if($errors) {?>

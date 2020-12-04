@@ -1,5 +1,5 @@
 <?php
-
+//演習問題8.12-4
 "create table restaurents (
     
     client_id int not null primary key auto_increment, 
