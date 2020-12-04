@@ -1,3 +1,4 @@
+
 <!-- 演習問題8.12-3 -->
 <form method='POST' action="<?= $form->encode($_SERVER['PHP_SELF'])?>">
 <table>
