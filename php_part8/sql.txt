@@ -1,0 +1,23 @@
+//演習問題8.12-1, 2, 3
+create table dishes(
+    dishes_id INT,
+    dishe_name VARCHAR(255),
+    price DECIMAL(4, 2),
+    is_spicy INT
+);
+
+INSERT INTO dishes VALUES (1, "Walnut Bun", 1.00, 0);
+INSERT INTO dishes VALUES (2, "Cashew Nuts and White Mushrooms", 4.95, 0);
+INSERT INTO dishes VALUES (3, "DriedMulberries", 3.00, 0);
+INSERT INTO dishes VALUES (4, "Eggplant with Chili Sauce", 6.50, 1);
+INSERT INTO dishes VALUES (5, "Red Bean Bun", 1.00, 0);
+INSERT INTO dishes VALUES (6, "General Tso's Chickin", 5.50, 1);
+
+
+//演習問題8.12-4
+create table restaurents (
+    client_id int not null primary key auto_increment, 
+    name varchar(20) unique not null,
+    tellnumber varchar(11) not null, 
+    dish_id int not null
+)
