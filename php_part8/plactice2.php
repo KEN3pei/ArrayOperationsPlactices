@@ -3,8 +3,9 @@
 require_once "formhelper.php";
 
 try{
-    $db = new PDO('mysql:host=web_mysql_1;dbname=plactice','root','pass');
+    $db = new PDO('mysql:host=docker-practice_mysql_1;dbname=plactice','root','pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 }catch(PDOException $e){
     print $e->getMessage();
     exit();
@@ -34,7 +35,7 @@ function validate(){
     $input = array();
     $errors = array();
 
-    $input['price'] = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
+    $input['price'] = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
     if($input['price'] === null || $input['price'] === false){
         $errors[] = 'Please enter minimum';
     }
@@ -45,22 +46,22 @@ function validate(){
 function process_form($input){
     global $db;
 
-    $sql = "SELECT (dish_name, price) FROM dishes WHERE price >= ?";
+    $sql = "SELECT dish_name, price FROM dishes WHERE price >= ?";
     $dish = $db->quote($input['price']);
     $dish = strtr($dish, array('_' => '\_', '%' => '\%'));
-
+    
     $stmt = $db->prepare($sql);
-    $stmt->execute(array($dish));
-    $dishes = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    $stmt->execute((array)$dish);
+    $dishes = $stmt->fetchAll();
 
     if(count($dishes) == 0){
         print 'No dishes matched';
     }else{
         print '<table>';
         print '<tr><th>Dish Name</th><th>Price</th></tr>';
-        foreach($dishes as $key => $dish){
+        foreach($dishes as $dish){
             printf('<tr><td>%s</td><td>%s</td></tr>',
-                    htmlentities($key), $dish);
+                    htmlentities($dish->dish_name), $dish->price);
         }
         print '<table>';
     }
