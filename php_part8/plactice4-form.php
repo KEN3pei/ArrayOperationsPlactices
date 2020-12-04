@@ -17,7 +17,7 @@
         <td><?= $form->input('text',['name' => 'tell'])?></td>
     </tr>
     <tr><td>dishe_names:</td>
-        <td><?= $form->select($GLOBALS['dishe_names'], ['name' => 'dishe_name'])?></td>
+        <td><?= $form->select($GLOBALS['dish_names'], ['name' => 'dish_id'])?></td>
     </tr>
     <tr><td colspan="2">
         <?= $form->input('submit', ['value' => 'Client set'])?>
