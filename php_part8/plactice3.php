@@ -3,7 +3,7 @@
 require_once "formhelper.php";
 
 try{
-    $db = new PDO('');
+    $db = new PDO('mysql:host=web_mysql_1;dbname=plactice','root','pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
