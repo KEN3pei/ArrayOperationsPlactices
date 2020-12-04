@@ -1,5 +1,5 @@
 <?php
-//演習問題8.12-2
+// 演習問題8.12-2
 require_once "formhelper.php";
 
 try{
