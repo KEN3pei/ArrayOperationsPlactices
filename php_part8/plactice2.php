@@ -47,13 +47,12 @@ function validate(){
 function process_form($input){
     global $db;
 
+    $dish = $input['price'];
     $sql = "SELECT dish_name, price FROM dishes WHERE price >= ?";
-    $dish = $db->quote($input['price']);
-    $dish = strtr($dish, array('_' => '\_', '%' => '\%'));
-    
     $stmt = $db->prepare($sql);
     $stmt->execute((array)$dish);
     $dishes = $stmt->fetchAll();
+    
 
     if(count($dishes) == 0){
         print 'No dishes matched';
