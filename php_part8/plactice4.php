@@ -1,6 +1,7 @@
 <?php
 //演習問題8.12-4
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 // 数値と数字の違いをわかってなかったため電話番号登録でsqlエラーが出た
 "create table restaurents (   
     client_id int not null primary key auto_increment, 
@@ -89,7 +90,7 @@ function process_form($input){
             print $e->getMessage();
         }
     }
-
+    $errors = null;
     $form = new FormHelper;
     include "plactice4-form.php";
 }

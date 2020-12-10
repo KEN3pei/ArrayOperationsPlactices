@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 //演習問題8.12-1
 
 try{
@@ -11,7 +14,7 @@ try{
     $stmt = $db->query($sql);
     $dishes = $stmt->fetchAll();
 
-    var_dump($stmt);
+    // var_dump($stmt);
 
     if(count($dishes) == 0){
         print 'No dishes matched';

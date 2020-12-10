@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 // 演習問題8.12-2
 require_once "formhelper.php";
 

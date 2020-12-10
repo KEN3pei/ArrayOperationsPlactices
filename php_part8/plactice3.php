@@ -1,5 +1,7 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+// echo $ken = "kensuke";
 //演習問題8.12-3
 require_once "formhelper.php";
 
@@ -33,8 +35,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     show_form();
 }
 
-function show_form($errors = array()){
-
+function show_form($errors = null){
+    
     $form = new FormHelper;
     
     include "plactice3-form.php";
@@ -65,7 +67,7 @@ function process_form($dishes){
                 htmlentities($dishes->dish_id), $dishes->dish_name, $dishes->price, $dishes->is_spicy);
         print '<table>';
     }
-
+    $errors = null;
     $form = new FormHelper;
     include "plactice3-form.php";
 }
