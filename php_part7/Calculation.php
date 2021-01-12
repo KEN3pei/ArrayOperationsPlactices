@@ -51,6 +51,19 @@ function divided($num1, $num2){
 }
 
 function validate(){
+
+    // 演習問題12-6.3(答え)
+    // 出力バッファリングを有効にする
+    ob_start();
+    // サブミットされたデータをすべてダンプする
+    var_dump($_POST);
+    // 生成された「出力」を取得する
+    $output = ob_get_contents();
+    // 出力バッファリングを無効にする
+    ob_end_clean();
+    // 変数ダンプをエラーログに送る
+    error_log($output);
+
     $input['num1'] = filter_input(INPUT_POST, 'num1', FILTER_VALIDATE_FLOAT);
     if(is_null($input['num1']) || ($input['num1'] === false)){
         echo "num1 is validated";
@@ -65,6 +78,8 @@ function validate(){
         echo "array_key_exists is validated";
         return false;
     }
+    // 演習問題12-6.3
+    // error_log(" form1 = {$input['num1']}, form2 = {$input['num2']}, calculation = {$_POST['calculation']}");
     return true;
 }
 

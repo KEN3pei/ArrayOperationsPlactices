@@ -12,8 +12,10 @@ ini_set("display_errors", 1);
 
 require_once "formhelper.php";
 
-try{
-    $db = new PDO('mysql:host=docker-practice_mysql_1;dbname=plactice','root','pass');
+// 演習問題12.6-3
+set_exception_handler('cunstum_error_handler');
+// try{
+    $db = new PDO('mysql:host=docker-practice_mysql_1;dbname=','root','pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
@@ -25,10 +27,10 @@ try{
         $dish_names[$dish->dish_id] = $dish->dish_name;
     }
 
-}catch(PDOException $e){
-    print $e->getMessage();
-    exit();
-}
+// }catch(PDOException $e){
+//     print $e->getMessage();
+//     exit();
+// }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     list($errors, $input) = validate();
@@ -74,7 +76,7 @@ function process_form($input){
     global $db;
 
     if($input){
-        try{
+        // try{
             $sql = 'INSERT INTO restaurents (name, tellnumber, dish_id) VALUES (?,?,?)';
             $param = array(
                 $input['name'],
@@ -85,12 +87,19 @@ function process_form($input){
             $stmt = $db->prepare($sql);
             $stmt->execute($param);
             
-        }catch(PDOException $e){
+        // }catch(PDOException $e){
             
-            print $e->getMessage();
-        }
+        //     print $e->getMessage();
+        // }
     }
     $errors = null;
     $form = new FormHelper;
     include "plactice4-form.php";
+}
+
+// 演習問題12.6-3
+function cunstum_error_handler($ex){
+    print $ex->getMessage();
+    error_log("error is : {$ex->getMessage()} !!!");
+    error_log("{$ex->getTraceAsString()} !!!");
 }
